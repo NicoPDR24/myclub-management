@@ -1,0 +1,34 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Club-spezifische Regeln für Multi-Tenancy
+    match /clubs/{clubId} {
+      allow read, write: if request.auth != null 
+        && resource.data.members[request.auth.uid] != null;
+    }
+    
+    // Team-Daten innerhalb eines Clubs
+    match /clubs/{clubId}/teams/{teamId} {
+      allow read, write: if request.auth != null 
+        && get(/databases/$(database)/documents/clubs/$(clubId)).data.members[request.auth.uid] != null;
+    }
+    
+    // Player-Daten innerhalb eines Teams
+    match /clubs/{clubId}/teams/{teamId}/players/{playerId} {
+      allow read, write: if request.auth != null 
+        && get(/databases/$(database)/documents/clubs/$(clubId)).data.members[request.auth.uid] != null;
+    }
+    
+    // Matches und Events
+    match /clubs/{clubId}/matches/{matchId} {
+      allow read, write: if request.auth != null 
+        && get(/databases/$(database)/documents/clubs/$(clubId)).data.members[request.auth.uid] != null;
+    }
+    
+    // User Profile
+    match /users/{userId} {
+      allow read, write: if request.auth != null 
+        && request.auth.uid == userId;
+    }
+  }
+}

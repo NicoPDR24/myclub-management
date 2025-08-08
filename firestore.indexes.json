@@ -1,0 +1,47 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "teams",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "clubId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "season",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "matches",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "clubId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "players",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "teamId",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "position",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

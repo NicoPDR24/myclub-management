@@ -1,0 +1,334 @@
+/**
+ * Global Styles
+ * Modern CSS with Tailwind and custom properties
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    --success: 142.1 76.2% 36.3%;
+    --success-foreground: 355.7 100% 97.3%;
+    --warning: 38.3 92.1% 50.2%;
+    --warning-foreground: 48.2 100% 93.5%;
+    --info: 214.3 100% 50.2%;
+    --info-foreground: 210 40% 98%;
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+    --success: 142.1 70.6% 45.3%;
+    --success-foreground: 144.6 100% 96.7%;
+    --warning: 38.3 95.7% 55.3%;
+    --warning-foreground: 20.5 90.2% 4.3%;
+    --info: 214.3 100% 59.8%;
+    --info-foreground: 210 40% 98%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  /* Focus styles */
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+}
+
+@layer components {
+  /* Card component styles */
+  .card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm;
+  }
+
+  .card-header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
+
+  .card-title {
+    @apply text-2xl font-semibold leading-none tracking-tight;
+  }
+
+  .card-description {
+    @apply text-sm text-muted-foreground;
+  }
+
+  .card-content {
+    @apply p-6 pt-0;
+  }
+
+  .card-footer {
+    @apply flex items-center p-6 pt-0;
+  }
+
+  /* Button component styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .btn-destructive {
+    @apply bg-destructive text-destructive-foreground hover:bg-destructive/90;
+  }
+
+  .btn-outline {
+    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-link {
+    @apply text-primary underline-offset-4 hover:underline;
+  }
+
+  .btn-sm {
+    @apply h-9 px-3;
+  }
+
+  .btn-md {
+    @apply h-10 px-4 py-2;
+  }
+
+  .btn-lg {
+    @apply h-11 px-8;
+  }
+
+  .btn-icon {
+    @apply h-10 w-10;
+  }
+
+  /* Input component styles */
+  .input {
+    @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Label component styles */
+  .label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+
+  /* Badge component styles */
+  .badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  .badge-default {
+    @apply border-transparent bg-primary text-primary-foreground hover:bg-primary/80;
+  }
+
+  .badge-secondary {
+    @apply border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80;
+  }
+
+  .badge-destructive {
+    @apply border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80;
+  }
+
+  .badge-outline {
+    @apply text-foreground;
+  }
+
+  .badge-success {
+    @apply border-transparent bg-success text-success-foreground hover:bg-success/80;
+  }
+
+  .badge-warning {
+    @apply border-transparent bg-warning text-warning-foreground hover:bg-warning/80;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    @apply animate-spin rounded-full border-2 border-muted border-t-primary;
+  }
+
+  /* Skeleton loading */
+  .skeleton {
+    @apply animate-pulse rounded-md bg-muted;
+  }
+
+  /* Custom animations */
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out;
+  }
+
+  @keyframes slide-in-from-left {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  .animate-slide-in-from-left {
+    animation: slide-in-from-left 0.3s ease-out;
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    @apply flex items-center gap-2 rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-primary hover:bg-accent;
+  }
+
+  .nav-link.active {
+    @apply bg-accent text-primary;
+  }
+
+  /* Form styles */
+  .form-group {
+    @apply space-y-2;
+  }
+
+  .form-error {
+    @apply text-sm text-destructive;
+  }
+
+  .form-help {
+    @apply text-sm text-muted-foreground;
+  }
+
+  /* Table styles */
+  .table {
+    @apply w-full caption-bottom text-sm;
+  }
+
+  .table-header {
+    @apply [&_tr]:border-b;
+  }
+
+  .table-body {
+    @apply [&_tr:last-child]:border-0;
+  }
+
+  .table-footer {
+    @apply border-t bg-muted/50 font-medium [&>tr]:last:border-b-0;
+  }
+
+  .table-row {
+    @apply border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted;
+  }
+
+  .table-head {
+    @apply h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0;
+  }
+
+  .table-cell {
+    @apply p-4 align-middle [&:has([role=checkbox])]:pr-0;
+  }
+
+  /* Utility classes */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent;
+  }
+
+  .glass {
+    @apply bg-background/80 backdrop-blur-sm;
+  }
+
+  .container-padding {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-break-before {
+    page-break-before: always;
+  }
+  
+  .print-break-after {
+    page-break-after: always;
+  }
+}
