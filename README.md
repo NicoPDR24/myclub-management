@@ -1,204 +1,262 @@
-# 🏆 MyClub Management
+# MyClub Management 🏆
 
-> Firebase-First Fußball-Vereinsmanagementplattform mit Next.js und React Native
+Eine moderne, Firebase-basierte Fußballvereinsmanagement-Plattform mit Multi-Tenant-Architektur, Next.js Frontend und React Native Mobile App.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 ![Firebase](https://img.shields.io/badge/firebase-ready-orange.svg)
+![TypeScript](https://img.shields.io/badge/typescript-strict-blue.svg)
 
-## 🎯 **Über das Projekt**
+## 🚀 Features
 
-MyClub Management ist eine moderne, skalierbare Plattform für die Verwaltung von Fußball-Amateuvereinen. Mit Multi-Tenant-Architektur, rollenbasierter Zugriffskontrolle und Real-time-Features.
+- **Multi-Tenant Architektur** - Ein System, mehrere Vereine
+- **Team Management** - Verwalten Sie mehrere Teams mit Spielerlisten
+- **Spielerstatistiken** - Detaillierte Leistungsanalysen  
+- **Spielplanung** - Matches, Trainings und Turniere
+- **Mobile App** - Native iOS/Android App mit Offline-Funktionen
+- **Real-time Updates** - Live-Synchronisation zwischen Geräten
+- **DSGVO-konform** - Höchste Datenschutz- und Sicherheitsstandards
 
-### ✨ **Hauptfunktionen**
-- 👥 **Multi-Tenant** - Separate Datenbanken pro Verein
-- 🔐 **Rollen-System** - Admin, Trainer, Spieler mit unterschiedlichen Berechtigungen
-- 📱 **Cross-Platform** - Web-App (Next.js) + Mobile App (React Native)
-- 🔔 **Push-Notifications** - Training-Absagen, Spiel-Erinnerungen
-- ⚡ **Real-time Updates** - Live-Datensynkronisation
-- 📊 **Analytics** - Detaillierte Statistiken und Reports
+## 🏗️ Technologie-Stack
 
-## 🏗️ **Technologie-Stack**
-
-### Frontend
-- **Web:** Next.js 14 + TypeScript + Tailwind CSS
-- **Mobile:** React Native + Expo
-- **UI Library:** Storybook + Headless UI
-- **State Management:** Zustand
+### Frontend (Web)
+- **Next.js 14** - React Framework mit App Router
+- **TypeScript** - Type-safe Development
+- **Tailwind CSS** - Utility-first CSS Framework
+- **Firebase SDK v9+** - Authentication & Firestore
 
 ### Backend
-- **Database:** Firebase Firestore
-- **Authentication:** Firebase Auth
-- **Functions:** Firebase Cloud Functions
-- **Storage:** Firebase Storage
-- **Messaging:** Firebase Cloud Messaging (FCM)
+- **Firebase** - Backend-as-a-Service
+- **Cloud Functions** - Serverless Functions
+- **Firestore** - NoSQL Database
+- **Firebase Auth** - Authentication & Authorization
 
-### DevOps
-- **Hosting:** Vercel (Web) + Firebase (Functions)
-- **CI/CD:** GitHub Actions
-- **Monitoring:** Firebase Analytics + Sentry
+### Mobile
+- **React Native** - Cross-platform Mobile Development
+- **Expo** - Development Platform
 
-## 📁 **Projekt-Struktur**
+### Development
+- **Monorepo** - NPM Workspaces
+- **ESLint + Prettier** - Code Quality & Formatting
+- **TypeScript Strict Mode** - Maximum Type Safety
+
+## 📁 Projekt-Struktur
 
 ```
 myclub-management/
-├── web/                    # Next.js Web Application
-│   ├── src/app/           # App Router (Next.js 14)
-│   ├── src/components/    # React Components
-│   ├── src/lib/          # Firebase, Utils, Types
-│   └── src/stores/       # Zustand State Management
-├── mobile/                # React Native Mobile App
-│   ├── app/              # Expo Router
-│   ├── components/       # Mobile Components
-│   └── services/         # Firebase Services
-├── functions/             # Firebase Cloud Functions
-│   └── src/              # TypeScript Functions
-├── docs/                  # Projekt-Dokumentation
-└── .storybook/           # Component Library
+├── web/                    # Next.js Web App
+│   ├── app/               # Next.js 14 App Router
+│   ├── components/        # React Komponenten
+│   └── lib/              # Utilities & Services
+├── mobile/               # React Native App
+├── functions/           # Firebase Cloud Functions
+├── shared/             # Shared Types & Utils
+│   ├── types/         # TypeScript Definitionen
+│   ├── constants/     # App-weite Konstanten
+│   └── utils/         # Utility Functions
+└── .storybook/        # Component Documentation
 ```
 
-## 🚀 **Schnellstart**
+## 🛠️ Development Setup
 
-### Voraussetzungen
+### Prerequisites
 - Node.js 18+ 
 - npm 9+
 - Firebase CLI
-- Git
 
 ### Installation
 
-1. **Repository klonen**
-   ```bash
-   git clone https://github.com/NicoPDR24/myclub-management.git
-   cd myclub-management
-   ```
+```bash
+# Repository klonen
+git clone https://github.com/NicoPDR24/myclub-management.git
+cd myclub-management
 
-2. **Dependencies installieren**
-   ```bash
-   npm run setup
-   ```
+# Dependencies installieren
+npm install
 
-3. **Firebase konfigurieren**
-   ```bash
-   # Firebase CLI installieren (falls nicht vorhanden)
-   npm install -g firebase-tools
-   
-   # Bei Firebase anmelden
-   firebase login
-   
-   # Projekt initialisieren
-   firebase init
-   ```
+# Environment Variables konfigurieren
+cp web/.env.local.example web/.env.local
+# Demo-Konfiguration ist bereits gesetzt für lokale Entwicklung
+```
 
-4. **Entwicklung starten**
-   ```bash
-   # Alle Services starten
-   npm run dev
-   
-   # Oder einzeln:
-   npm run web:dev      # Web-App (http://localhost:3000)
-   npm run mobile:dev   # Mobile App
-   npm run storybook    # Component Library
-   ```
+### Firebase Emulators Setup
 
-## 📚 **Dokumentation**
+```bash
+# Firebase Tools sind bereits als devDependency installiert
 
-- 📖 [Entwickler-Guide](docs/DEVELOPMENT.md)
-- 🏗️ [Architektur](docs/ARCHITECTURE.md)
-- 🚀 [Deployment](docs/DEPLOYMENT.md)
-- 🧪 [Testing](docs/TESTING.md)
-- 🔧 [API Referenz](docs/API.md)
+# Emulators starten
+npm run emulators
 
-## 🎭 **Rollen & Berechtigungen**
+# In einem neuen Terminal: Test-Daten laden
+npm run seed
+```
 
-### 🔴 **ADMIN** (Vereinsadministrator)
+### Development Server starten
+
+```bash
+# Nur Web-App
+npm run web:dev
+
+# Oder: Web + Firebase Emulators
+npm run dev:full
+```
+
+Die Anwendung ist verfügbar unter:
+- **Web App**: http://localhost:3000
+- **Firebase Emulator UI**: http://localhost:4000
+
+### Test Accounts
+
+Nach dem Seeding stehen folgende Test-Accounts zur Verfügung:
+
+- **Admin**: admin@myclub.de (Passwort: password123)
+- **Trainer**: trainer@myclub.de (Passwort: password123)  
+- **Spieler**: spieler@myclub.de (Passwort: password123)
+
+## 🏃‍♂️ Available Scripts
+
+### Root Level
+```bash
+npm run dev              # Start Web + Mobile development
+npm run build           # Build all workspaces
+npm run test            # Run all tests
+npm run lint            # Lint all workspaces
+npm run emulators       # Start Firebase emulators
+npm run seed            # Populate emulators with test data
+npm run dev:full        # Start Web + Emulators together
+```
+
+### Web App
+```bash
+npm run web:dev         # Start Next.js development server
+npm run web:build       # Build for production
+npm run web:start       # Start production server
+```
+
+### Mobile App
+```bash
+npm run mobile:dev      # Start Expo development server
+npm run mobile:build    # Build mobile apps
+```
+
+### Cloud Functions
+```bash
+npm run functions:dev   # Start functions in watch mode
+npm run functions:build # Build functions
+npm run functions:deploy # Deploy to Firebase
+```
+
+## 🔥 Firebase Configuration
+
+### Environment Variables
+
+Die `.env.local` ist bereits mit Demo-Werten für lokale Entwicklung konfiguriert. Für Produktion kopieren Sie `.env.local.example`:
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=your-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-project.firebaseapp.com
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-project.appspot.com
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=your-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-app-id
+```
+
+### Security Rules
+
+Die Firestore Security Rules sind bereits konfiguriert für:
+- Multi-Tenant Isolation
+- Role-based Access Control
+- Sichere Datenabfragen
+
+## 📚 Dokumentation
+
+### Architektur-Entscheidungen
+- **Multi-Tenant**: Jeder Verein ist isoliert, teilt sich aber die Infrastruktur
+- **Type-First**: TypeScript für maximale Typsicherheit
+- **Component-Driven**: Wiederverwendbare UI-Komponenten
+- **Offline-First**: Mobile App funktioniert auch ohne Internet
+
+### Code-Stil
+- **Functional Components** mit Hooks
+- **Strict TypeScript** Konfiguration
+- **ESLint + Prettier** für konsistente Formatierung
+- **Explizite Imports** für bessere Tree-Shaking
+
+## 🚢 Deployment
+
+### Web App (Firebase Hosting)
+```bash
+npm run build:web
+firebase deploy --only hosting
+```
+
+### Cloud Functions
+```bash
+npm run build:functions  
+firebase deploy --only functions
+```
+
+### Mobile App
+```bash
+# Build für App Stores
+npm run build:mobile
+```
+
+## 🔒 Sicherheit
+
+- **DSGVO-konform** - Alle Datenschutzrichtlinien implementiert
+- **Firebase Security Rules** - Server-side Validierung
+- **Authentication** - JWT-basierte Benutzer-Authentifizierung
+- **HTTPS-only** - Alle Daten verschlüsselt übertragen
+- **Input Validation** - Client- und Server-side Validierung
+
+## 🧪 Testing
+
+```bash
+# Unit Tests
+npm run test
+
+# Linting
+npm run lint
+
+# Emulator-basierte Entwicklung
+npm run emulators
+```
+
+## 🎭 Rollen & Berechtigungen
+
+### 🔴 ADMIN (Vereinsadministrator)
 - Vollzugriff auf alle Vereinsdaten
 - Teams, Spieler, Personal verwalten
-- News erstellen und bearbeiten
-- Transfers durchführen
 - System-Einstellungen
 
-### 🟡 **TRAINER** (Mannschaftsverantwortlicher) 
+### 🟡 TRAINER (Mannschaftsverantwortlicher) 
 - Eigene Teams verwalten
-- Training planen und absagen
+- Training planen
 - Aufstellungen erstellen
-- Team-News verfassen
 - Spielstatistiken eingeben
 
-### 🟢 **SPIELER** (Vereinsmitglied)
+### 🟢 SPIELER (Vereinsmitglied)
 - Eigenes Profil bearbeiten
 - Team-Termine einsehen
-- Vereinsnews lesen
-- Push-Benachrichtigungen erhalten
 - Eigene Statistiken einsehen
 
-## 🔧 **Entwicklung**
+## 📄 License
 
-### Verfügbare Scripts
+MIT License - siehe [LICENSE](LICENSE) für Details.
 
-```bash
-# Entwicklung
-npm run dev              # Alle Services
-npm run web:dev          # Nur Web-App
-npm run mobile:dev       # Nur Mobile App
-
-# Build
-npm run build           # Production Build
-npm run test           # Tests ausführen
-npm run lint           # Code Linting
-
-# Utils
-npm run clean          # Node Modules löschen
-```
-
-### Git Workflow
-
-```bash
-# Feature entwickeln
-git checkout -b feature/neue-funktion
-git add .
-git commit -m "feat: neue Funktion implementiert"
-git push origin feature/neue-funktion
-```
-
-## 🚢 **Deployment**
-
-### Automatisches Deployment
-- **Web-App:** Automatisch auf Vercel bei Push zu `main`
-- **Mobile App:** EAS Build über GitHub Actions
-- **Cloud Functions:** Firebase Functions Deploy
-
-### Manuelles Deployment
-```bash
-# Web App
-npm run build:web
-vercel --prod
-
-# Firebase Functions  
-npm run build:functions
-firebase deploy --only functions
-
-# Mobile App
-cd mobile
-eas build --platform all
-```
-
-## 🤝 **Beitragen**
+## 👥 Contributing
 
 1. Fork das Repository
-2. Feature Branch erstellen (`git checkout -b feature/amazing-feature`)
-3. Änderungen committen (`git commit -m 'feat: Add amazing feature'`)
-4. Branch pushen (`git push origin feature/amazing-feature`)
-5. Pull Request erstellen
+2. Erstellen Sie einen Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. Commiten Sie Ihre Änderungen (`git commit -m 'Add some AmazingFeature'`)
+4. Push zum Branch (`git push origin feature/AmazingFeature`)
+5. Öffnen Sie eine Pull Request
 
-## 📄 **Lizenz**
+## 📞 Support
 
-Dieses Projekt ist unter der MIT Lizenz lizenziert. Siehe [LICENSE](LICENSE) für Details.
-
-## 👨‍💻 **Autor**
-
-**NicoPDR24** - [GitHub](https://github.com/NicoPDR24)
+Bei Fragen oder Problemen erstellen Sie bitte ein [Issue](https://github.com/NicoPDR24/myclub-management/issues).
 
 ---
 
-**🚀 Status: In Entwicklung** | **📧 Support:** [Issues](https://github.com/NicoPDR24/myclub-management/issues)
+**Made with ❤️ by [NicoPDR24](https://github.com/NicoPDR24)**

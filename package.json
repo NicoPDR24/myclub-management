@@ -23,7 +23,12 @@
     "lint": "npm run lint --workspaces",
     "clean": "rm -rf node_modules web/node_modules mobile/node_modules functions/node_modules",
     "setup": "npm install && npm run setup:firebase",
-    "setup:firebase": "echo 'Firebase Setup - wird in nächstem Schritt konfiguriert'"
+    "setup:firebase": "echo 'Firebase Setup - wird in nächstem Schritt konfiguriert'",
+    "emulators": "firebase emulators:start",
+    "emulators:export": "firebase emulators:export ./emulator-data",
+    "emulators:import": "firebase emulators:start --import=./emulator-data",
+    "dev:full": "concurrently \"npm run emulators\" \"npm run web:dev\"",
+    "seed": "npm run functions:build && node scripts/seed-data.js"
   },
   "devDependencies": {
     "concurrently": "^8.2.2",
@@ -32,7 +37,8 @@
     "@typescript-eslint/parser": "^7.18.0",
     "eslint-plugin-import": "^2.29.1",
     "prettier": "^3.2.5",
-    "typescript": "^5.4.2"
+    "typescript": "^5.4.2",
+    "firebase-tools": "^13.20.0"
   },
   "engines": {
     "node": ">=18.0.0",
