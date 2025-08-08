@@ -1,0 +1,57 @@
+{
+  "name": "myclub-management",
+  "version": "1.0.0",
+  "description": "Firebase-First Fußball-Vereinsmanagementplattform mit Next.js und React Native",
+  "private": true,
+  "workspaces": [
+    "web",
+    "mobile", 
+    "functions",
+    ".storybook"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm run web:dev\" \"npm run mobile:dev\"",
+    "web:dev": "npm run dev --workspace=web",
+    "mobile:dev": "npm run dev --workspace=mobile",
+    "functions:dev": "npm run dev --workspace=functions",
+    "storybook": "npm run storybook --workspace=.storybook",
+    "build": "npm run build:web && npm run build:mobile && npm run build:functions",
+    "build:web": "npm run build --workspace=web",
+    "build:mobile": "npm run build --workspace=mobile", 
+    "build:functions": "npm run build --workspace=functions",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "clean": "rm -rf node_modules web/node_modules mobile/node_modules functions/node_modules",
+    "setup": "npm install && npm run setup:firebase",
+    "setup:firebase": "echo 'Firebase Setup - wird in nächstem Schritt konfiguriert'"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5",
+    "typescript": "^5.4.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/NicoPDR24/myclub-management.git"
+  },
+  "keywords": [
+    "firebase",
+    "nextjs", 
+    "react-native",
+    "football",
+    "club-management",
+    "multi-tenant",
+    "typescript"
+  ],
+  "author": "NicoPDR24",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NicoPDR24/myclub-management/issues"
+  },
+  "homepage": "https://github.com/NicoPDR24/myclub-management#readme"
+}
